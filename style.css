@@ -1,0 +1,55 @@
+body
+{
+	font-family: sans-serif;
+	font-size: xx-large;
+	font-family: 微软雅黑, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+td, th
+{
+	border: solid 1px;
+}
+
+.pull
+{
+	height: 60px;
+	width: 350px;
+	margin: 20% auto;
+}
+
+.name
+{
+	font-size: xx-large;
+	font-family: 微软雅黑, sans-serif;
+}
+
+.submit
+{
+	font-size: xx-large;
+	font-family: 微软雅黑, sans-serif;
+}
+
+.wrap
+{
+	margin: 30px auto;
+	padding: 0px 30px;
+	text-align: center;
+}
+
+.freq_change
+{
+	width: 450px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+.table
+{
+	margin: 0 auto;
+	font-size: x-large;
+	width: 90%;
+	text-align: center;
+	border-collapse:collapse;
+}	
