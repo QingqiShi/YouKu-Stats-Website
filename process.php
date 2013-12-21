@@ -12,7 +12,7 @@
     $range = $_POST["range"];
 ?>
 		<div class="wrap">
-		<p class="name"><?php echo $name; ?></p>
+		<p class="name"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
 		<form action="#" method="post">
 			<input type="hidden" name="name" value="<?php echo $name;?>">
