@@ -16,13 +16,21 @@ td, th
 {
 	height: 60px;
 	width: 350px;
-	margin: 20% auto;
+	margin: 10% auto 0 auto;
 }
 
 .name
 {
 	font-size: xx-large;
 	font-family: 微软雅黑, sans-serif;
+}
+
+.title
+{
+    font-size: 1.8em;
+    width: 350px;
+    margin: 20% auto 0 auto;
+    text-align: center;
 }
 
 .submit
