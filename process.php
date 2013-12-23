@@ -1,9 +1,9 @@
 <?php
 	date_default_timezone_set('PRC');
-	$name = $_POST["name"];
+	$name = $_GET["name"];
 if ($name != "") {
-	$frequency = $_POST["frequency"];
-    $range = $_POST["range"];
+	$frequency = $_GET["frequency"];
+    $range = $_GET["range"];
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -15,7 +15,7 @@ if ($name != "") {
 		<div class="wrap">
 		<p class="name"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
-		<form action="#" method="post">
+		<form action="#" method="GET">
 			<input type="hidden" name="name" value="<?php echo $name;?>">
 			<select name="frequency" class="name">
 				<option value="1"<?php if($frequency == 1) {echo " selected";}?>>每小时</option>
