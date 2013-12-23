@@ -16,7 +16,7 @@ td, th
 {
 	height: 60px;
 	width: 350px;
-	margin: 10% auto 0 auto;
+	margin: 20px auto 0 auto;
 }
 
 .name
@@ -29,7 +29,7 @@ td, th
 {
     font-size: 1.8em;
     width: 350px;
-    margin: 20% auto 0 auto;
+    margin: 3em auto 0 auto;
     text-align: center;
 }
 
