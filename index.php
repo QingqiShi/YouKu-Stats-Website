@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-        <div class="title">优酷数据统计</div>
+        <div class="title largeMargin">优酷数据统计</div>
 		<div class="pull">
             <form action="process.php" method="get">
                 <select name="name" class="name">

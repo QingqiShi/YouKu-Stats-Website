@@ -29,6 +29,11 @@ td, th
 {
     font-size: 1.8em;
     width: 350px;
+    margin: 0 auto;
+}
+
+.largeMargin
+{
     margin: 3em auto 0 auto;
     text-align: center;
 }
