@@ -1,3 +1,4 @@
 <?php
-    `/home/xwiy/git/usr/bin/git pull`;
+    $a=`/home/xwiy/git/usr/bin/git pull`;
+    echo $a;
 ?>
