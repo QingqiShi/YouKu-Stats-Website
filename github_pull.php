@@ -1,3 +1,3 @@
 <?php
-    `git pull`;
+    `/home/xwiy/git/usr/bin/git pull`;
 ?>
