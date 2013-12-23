@@ -13,7 +13,7 @@ if ($name != "") {
 	</head>
 	<body>
 		<div class="wrap">
-		<p class="name"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
+		<p class="title"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
 		<form action="#" method="GET">
 			<input type="hidden" name="name" value="<?php echo $name;?>">
