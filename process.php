@@ -1,3 +1,10 @@
+<?php
+	date_default_timezone_set('PRC');
+	$name = $_POST["name"];
+if ($name != "") {
+	$frequency = $_POST["frequency"];
+    $range = $_POST["range"];
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
@@ -5,12 +12,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-<?php
-	date_default_timezone_set('PRC');
-	$name = $_POST["name"];
-	$frequency = $_POST["frequency"];
-    $range = $_POST["range"];
-?>
 		<div class="wrap">
 		<p class="name"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
@@ -148,4 +149,8 @@
 		<a href="./">返回</a>
 		</div>
 	</body>
-</html>					
+</html>	
+<?php
+} else {
+     header( 'Location: http://www.cssanott.co.uk/YouKu-Stats-Website/' ) ;
+}
