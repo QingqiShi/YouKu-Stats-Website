@@ -29,7 +29,7 @@ td, th
 {
     font-size: 1.8em;
     width: 350px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
 }
 
 .largeMargin
