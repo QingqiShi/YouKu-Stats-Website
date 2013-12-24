@@ -14,13 +14,16 @@
 	$file = fopen("list.txt","r");
 
 	while (!feof($file)) {
-		$name = fgets($file);
-		$name = rtrim($name);
+		$line = fgets($file);
+		$line = rtrim($line);
+        $url = substr($line, strpos($line, " ") + 1);
+        $name = substr($line, 0, strpos($line, " "));
+        echo $url;
 		$i = false;
 		$j = false;
 		$k = false;
 		while ($i == false || $j == false || $k == false) {	
-			$str = get_url_contents("http://i.youku.com/".$name);
+			$str = get_url_contents($url);
 			$i = strpos($str, "<strong class=\"number\">");
 			$j = strrpos($str, "<strong class=\"number\">");
 			$k = strpos($str, "<dt>访问:</dt>");
