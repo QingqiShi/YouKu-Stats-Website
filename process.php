@@ -28,6 +28,7 @@ if ($name != "") {
 				<option value="30"<?php if($range == 30) {echo " selected";}?>>过去30天</option>
 				<option value="90"<?php if($range == 90) {echo " selected";}?>>过去90天</option>
 				<option value="365"<?php if($range == 365) {echo " selected";}?>>过去365天</option>
+                <option value="0"<?php if($range == 0) {echo " selected";}?>>生命周期</option>
 			</select>
 			<input type="submit" value="拉取数据" class="submit" />
 		</form>
@@ -69,7 +70,7 @@ if ($name != "") {
 		$loop = 11;
 	}
 
-    while (feof($file) == false) {
+    while (feof($file) == false && $range != 0) {
 		$record = rtrim(fgets($file));
         $temp = substr($record, 0, strpos($record, " "));
         $tmphour = intval(date("G", $temp));
