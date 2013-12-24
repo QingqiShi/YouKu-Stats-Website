@@ -47,7 +47,7 @@
 		$visit = substr($visit, 0, strpos($visit, "</dd>"));
 		$visit = str_replace(",", "", $visit);
 
-		$analyse = fopen($name.".txt","a+");
+		$analyse = fopen($id.".txt","a+");
 		fwrite($analyse, time()." ".$sub." ".$view." ".$visit."\n");
 		fclose($analyse);
 	}
