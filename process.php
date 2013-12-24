@@ -35,7 +35,23 @@ if ($name != "") {
 		</div>
 		<a href="./">返回</a>
 <?php
-	$file = fopen($name.".txt", "r");
+	$tmp_file = fopen("list.txt", "r");
+    $id = 0;
+    while (!feof($tmp_file)) {
+        $id++;
+        $line = fgets($tmp_file);
+        $line = rtrim($line);
+        $user_id = substr($line, 
+                          0, 
+                          strpos($line, " "));
+        $user_name = substr($line, 
+                       strpos($line, " ") + 1, 
+                       strpos($line, " ", strlen($user_id)+1) - (strpos($line, " ") + 1));
+        if ($name == $user_name) {
+            break;
+        }
+    }
+    $file = fopen($id.".txt", "r");
 ?>
 		<table border="1" class="table">
 			<tr>
