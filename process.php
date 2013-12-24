@@ -1,9 +1,9 @@
 <?php
 	date_default_timezone_set('PRC');
-	$name = $_GET["name"];
+	$name = $_POST["name"];
 if ($name != "") {
-	$frequency = $_GET["frequency"];
-    $range = $_GET["range"];
+	$frequency = $_POST["frequency"];
+    $range = $_POST["range"];
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">

@@ -7,7 +7,7 @@
 	<body>
         <div class="title largeMargin">优酷数据统计</div>
 		<div class="pull">
-            <form action="process.php" method="get">
+            <form action="process.php" method="post">
                 <select name="name" class="name">
 <?php
                         $file = fopen("./list.txt", "r");
