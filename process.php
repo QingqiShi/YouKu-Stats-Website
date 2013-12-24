@@ -4,6 +4,26 @@
 if ($name != "") {
 	$frequency = $_POST["frequency"];
     $range = $_POST["range"];
+    
+	$tmp_file = fopen("list.txt", "r");
+    $id = 0;
+    while (!feof($tmp_file)) {
+        $id++;
+        $line = fgets($tmp_file);
+        $line = rtrim($line);
+        $user_id = substr($line, 
+                          0, 
+                          strpos($line, " "));
+        $user_name = substr($line, 
+                       strpos($line, " ") + 1, 
+                       strpos($line, " ", strlen($user_id)+1) - (strpos($line, " ") + 1));
+        $url = substr($line, 
+                                          strlen($user_id) + strlen($name) + 2);
+        if ($name == $user_name) {
+            break;
+        }
+    }
+    $file = fopen($id.".txt", "r");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -13,9 +33,9 @@ if ($name != "") {
 	</head>
 	<body>
 		<div class="wrap">
-		<p class="title"><a href="http://i.youku.com/<?php echo $name; ?>" target="_blank"><?php echo $name; ?></a></p>
+		<p class="title"><a href="<?php echo $url; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
-		<form action="#" method="GET">
+		<form action="#" method="POST">
 			<input type="hidden" name="name" value="<?php echo $name;?>">
 			<select name="frequency" class="name">
 				<option value="1"<?php if($frequency == 1) {echo " selected";}?>>每小时</option>
@@ -34,25 +54,6 @@ if ($name != "") {
 		</form>
 		</div>
 		<a href="./">返回</a>
-<?php
-	$tmp_file = fopen("list.txt", "r");
-    $id = 0;
-    while (!feof($tmp_file)) {
-        $id++;
-        $line = fgets($tmp_file);
-        $line = rtrim($line);
-        $user_id = substr($line, 
-                          0, 
-                          strpos($line, " "));
-        $user_name = substr($line, 
-                       strpos($line, " ") + 1, 
-                       strpos($line, " ", strlen($user_id)+1) - (strpos($line, " ") + 1));
-        if ($name == $user_name) {
-            break;
-        }
-    }
-    $file = fopen($id.".txt", "r");
-?>
 		<table border="1" class="table">
 			<tr>
 				<th>日期 时间</th>
