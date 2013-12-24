@@ -15,10 +15,16 @@
 
 	while (!feof($file)) {
 		$line = fgets($file);
-		$line = rtrim($line);
-        $url = substr($line, strpos($line, " ") + 1);
-        $name = substr($line, 0, strpos($line, " "));
-        echo $url;
+        $line = rtrim($line);
+        $user_id = substr($line, 
+                          0, 
+                          strpos($line, " "));
+        $name = substr($line, 
+                       strpos($line, " ") + 1, 
+                       strpos($line, " ", strlen($user_id)+1) - (strpos($line, " ") + 1));
+        $url = substr($line, 
+                      strlen($user_id) + strlen($name) + 2);
+
 		$i = false;
 		$j = false;
 		$k = false;
