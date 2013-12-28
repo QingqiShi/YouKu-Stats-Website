@@ -90,10 +90,7 @@ if ($name != "") {
     while (feof($file) == false && $range != 0) {
 		$record = rtrim(fgets($file));
         $temp = substr($record, 0, strpos($record, " "));
-        $tmphour = intval(date("G", $temp));
-        $tmpminutes = intval(date("i", $temp));
-        $tmpseconds = intval(date("s", $temp));
-        if ((time() - $temp + $tmphour * 3600 + $tmpminutes * 60 + $tmpseconds) <= ($range * 24 * 3600)) {
+        if ((time() - $temp) <= ($range * 24 * 3600)) {
             break;
         }
         if ($record != "" && date($timeStr, $temp) != $pre_set) {
@@ -115,6 +112,10 @@ if ($name != "") {
         }
 	}
         
+    $total_sub = 0;
+    $total_view = 0;
+    $total_visit = 0;
+    $count = 0;
 
 	while (feof($file) == false) {
 		$record = rtrim(fgets($file));
@@ -134,6 +135,7 @@ if ($name != "") {
                 <td><?php 
                     if ($pre_sub != 0) {
                         echo ($sub - $pre_sub);
+                        $total_sub += $sub - $pre_sub;
                     }
                     $pre_sub = $sub;
                 ?></td>
@@ -145,6 +147,7 @@ if ($name != "") {
                 <td><?php 
                     if ($pre_view != 0) {
                         echo ($view - $pre_view);
+                        $total_view += $view - $pre_view;
                     }
                     $pre_view = $view;
                 ?></td>
@@ -155,15 +158,31 @@ if ($name != "") {
                 <td><?php 
                     if ($pre_visit != 0) {
                         echo ($visit - $pre_visit);
+                        $total_visit += $visit - $pre_visit;
                     }
                     $pre_visit = $visit;
                 ?></td>
             </tr>
 <?php
+            $count++;
         }
 	}
 ?>
 		</table>
+        <div id="data_summary">
+            <div class="lable">平均粉丝增长</div>
+            <div class="data"><?php
+                echo round($total_sub / $count++);
+            ?></div>
+            <div class="lable">平均播放增长</div>
+            <div class="data"><?php
+                echo round($total_view / $count++);
+            ?></div>
+            <div class="lable">平均访问增长</div>
+            <div class="data"><?php
+                echo round($total_visit / $count++);
+            ?></div>
+        </div>
 		<a href="./">返回</a>
 		</div>
 	</body>
