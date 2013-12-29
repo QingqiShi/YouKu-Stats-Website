@@ -178,15 +178,15 @@ if ($name != "") {
         <div id="data_summary" class="clearfix">
             <div class="average_sub"><p><span class="lable">平均粉丝增长</span>
             <span class="data"><?php
-                echo round($total_sub / $count++);
+                echo round($total_sub / $count);
             ?></span></p></div>
             <div class="average_view"><p><span class="lable">平均播放增长</span>
             <span class="data"><?php
-                echo round($total_view / $count++);
+                echo round($total_view / $count);
             ?></span></p></div>
             <div class="average_visit"><p><span class="lable">平均访问增长</span>
             <span class="data"><?php
-                echo round($total_visit / $count++);
+                echo round($total_visit / $count);
             ?></span></p></div>
             <div></div>
         </div>
