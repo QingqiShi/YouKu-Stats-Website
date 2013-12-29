@@ -30,9 +30,12 @@ if ($name != "") {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
+    	<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
 	<body>
 		<div class="wrap">
+        <div class="back"><a href="./">返回首页</a></div>
 		<p class="title"><a href="<?php echo $url; ?>" target="_blank"><?php echo $name; ?></a></p>
 		<div class="freq_change">
 		<form action="#" method="POST">
@@ -53,8 +56,9 @@ if ($name != "") {
 			<input type="submit" value="拉取数据" class="submit" />
 		</form>
 		</div>
-		<a href="./">返回</a>
-		<table border="1" class="table">
+        <div class="hide_show"><button type="button">显示数据</button></div>
+        <div class="table">
+		<table border="1">
 			<tr>
 				<th>日期 时间</th>
 				<th>粉丝数</th>
@@ -169,21 +173,24 @@ if ($name != "") {
 	}
 ?>
 		</table>
-        <div id="data_summary">
-            <div class="lable">平均粉丝增长</div>
-            <div class="data"><?php
+    </div>
+
+        <div id="data_summary" class="clearfix">
+            <div class="average_sub"><p><span class="lable">平均粉丝增长</span>
+            <span class="data"><?php
                 echo round($total_sub / $count++);
-            ?></div>
-            <div class="lable">平均播放增长</div>
-            <div class="data"><?php
+            ?></span></p></div>
+            <div class="average_view"><p><span class="lable">平均播放增长</span>
+            <span class="data"><?php
                 echo round($total_view / $count++);
-            ?></div>
-            <div class="lable">平均访问增长</div>
-            <div class="data"><?php
+            ?></span></p></div>
+            <div class="average_visit"><p><span class="lable">平均访问增长</span>
+            <span class="data"><?php
                 echo round($total_visit / $count++);
-            ?></div>
+            ?></span></p></div>
+            <div></div>
         </div>
-		<a href="./">返回</a>
+		<div class="back"><a href="./">返回首页</a></div>
 		</div>
 	</body>
 </html>	

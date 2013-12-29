@@ -64,5 +64,67 @@ td, th
 	font-size: x-large;
 	width: 90%;
 	text-align: center;
+	display: none;
+	position:relative;
+	top: -2px;
+}
+
+.table table {
+	width: 100%;
 	border-collapse:collapse;
-}	
+}
+
+#data_summary {
+	width: 80%;
+	margin: 0 auto 0 auto;
+	text-align: center;
+}
+
+.average_sub, .average_visit, .average_view {
+	width: 32%;
+	display: block;
+	float: left;
+}
+
+#data_summary p {
+	margin: 0;
+}
+
+.lable, .data {
+	font-size: 0.7em;
+}
+
+.lable {
+	font-weight: bold;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.back {
+	width: 50%;
+	text-align: center;
+	margin: 20px auto;
+	font-size: 0.5em;
+}
+
+.hide_show {
+	width: 80%;
+	margin: 10px auto 0 auto;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	top: 0;
+}
+
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+}
