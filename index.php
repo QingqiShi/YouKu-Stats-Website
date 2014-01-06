@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
         <div class="title largeMargin">优酷数据统计</div>
-		<div class="pull">
+    <div class="pull">
             <form action="process.php" method="post">
                 <select name="name" class="name">
 <?php
@@ -31,6 +32,6 @@
                 <input type="hidden" name="range" value="30">
                 <input type="submit" value="拉取数据" class="submit"/>
             </form>
-		</div>
-	</body>
-</html>					
+    </div>
+  </body>
+</html>         
