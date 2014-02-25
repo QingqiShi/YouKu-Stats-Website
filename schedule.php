@@ -28,24 +28,20 @@
 		$i = false;
 		$j = false;
 		$k = false;
-		while ($i == false || $j == false || $k == false) {	
+		while ($i == false || $j == false) {	
 			$str = get_url_contents($url);
-			$i = strpos($str, "<strong class=\"number\">");
-			$j = strrpos($str, "<strong class=\"number\">");
-			$k = strpos($str, "<dt>访问:</dt>");
+			$i = strpos($str, "<li class=\"vnum\"><em>");
+			$j = strrpos($str, "<li class=\"snum\" ><em sum_num=\"");
 		}
 
-		$sub = substr($str, $i +23, 50);	
-		$sub = substr($sub, 0, strpos($sub, "</strong>"));
-		$sub = str_replace(",", "", $sub);	
+		$view = substr($str, $i +21, 50);	
+		$view = substr($sub, 0, strpos($sub, "</em>"));
+		$view = str_replace(",", "", $sub);	
 		
-		$view = substr($str, $j +23, 50);		
-		$view = substr($view, 0, strpos($view, "</strong>"));
-		$view = str_replace(",", "", $view);
+		$sub = substr($str, $j +31, 50);		
+		$sub = substr($view, 0, strpos($view, "\">"));
 		
-		$visit = substr($str, $k +26, 50);
-		$visit = substr($visit, 0, strpos($visit, "</dd>"));
-		$visit = str_replace(",", "", $visit);
+		$visit = 0
 
 		$analyse = fopen($user_id.".txt","a+");
 
