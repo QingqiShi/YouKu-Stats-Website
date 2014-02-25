@@ -41,7 +41,7 @@
 		$sub = substr($str, $j +31, 50);		
 		$sub = substr($view, 0, strpos($view, "\">"));
 		
-		$visit = 0
+		$visit = 0;
 
 		$analyse = fopen($user_id.".txt","a+");
 
