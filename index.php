@@ -31,6 +31,7 @@
                 </select>
                 <input type="hidden" name="frequency" value="24">
                 <input type="hidden" name="range" value="30">
+                <input type="hidden" name="graphType" value="2">
                 <input type="submit" value="拉取数据" class="submit"/>
             </form>
     </div>

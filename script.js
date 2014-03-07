@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	$('.hide_show').before($('#data_summary'));
 	$('button').click(function() {
 		//$('.table').addClass('hide');
 		if ($(this).html() === '显示数据') {
