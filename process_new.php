@@ -1,12 +1,14 @@
 <?php
-    date_default_timezone_set('PRC');
+require_once 'core/init.php';
 
-    $name = $_GET["name"];
-    $frequency = $_GET["frequency"];
-    $graphType = $_GET["graphType"];
-    $range = $_GET["range"];
+// date_default_timezone_set('PRC');
 
-if (true) {
+// $name = $_GET["name"];
+// $frequency = $_GET["frequency"];
+// $graphType = $_GET["graphType"];
+// $range = $_GET["range"];
+
+if (false) {
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -18,9 +20,6 @@ if (true) {
     <script type="text/javascript" src="JS/chart.js"></script>
 </head>
 <body>
-<?php
-    include_once('ROCKYconf.php');
-?>
 
     <div class="wrap">
     <div class="back">
@@ -187,6 +186,13 @@ if (true) {
 </body>
 </html> 
 <?php
+}
+
+
+
+if (Input::exists()) {
+    $validator = new Validate();
+    $validation = $validator;
 } else {
-     header( 'Location: http://www.cssanott.co.uk/YouKu-Stats-Website/' ) ;
+     header( 'Location: '. Config::get('site_url') ) ;
 }
