@@ -6,9 +6,9 @@ $GLOBALS['config'] = array(
     // 'site_url' => 'http://www.cssanott.co.uk',
     'site_url' => 'http://youkustats',
     'mysql' => array(
-                     'host' => '127.0.0.1',
-                     'username' => 'root',
-                     'passowrd' => '',
+                     'host' => 'localhost',
+                     'username' => 'ukstone',
+                     'password' => 'woaini344-1107',
                      'db' => 'rocky_youkustats'
                      ),
     'remember' => array(
