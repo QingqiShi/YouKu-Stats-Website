@@ -1,7 +1,7 @@
 <?php
     // Define variables to store our username
     $user = 'root';
-    $pass = '';
+    $pass = 'root';
     $database = 'rocky_youkustats';
 
     // Create a connection to the MySql server
