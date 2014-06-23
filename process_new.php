@@ -187,12 +187,50 @@ if (false) {
 </html> 
 <?php
 }
+?>
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="JS/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="JS/chart.js"></script>
+</head>
+<body>
 
-
-if (Input::exists()) {
+<?php
+if (Input::exists('get')) {
     $validator = new Validate();
-    $validation = $validator;
+    $validator->check($_GET, array(
+        'name' => array(
+            'name' => '用户名',
+            'required' => true
+            ),
+        'frequency' => array(
+            'name' => '频率',
+            'required' => true
+            ),
+        'range' => array(
+            'name' => '日期范围',
+            'required' => true
+            ),
+        'graphType' => array(
+            'name' => '数据种类',
+            'required' => true
+            )
+        ));
+    if ($validator->passed()) {
+        echo 'passed';
+    } else {
+        print_r($validator->errors());
+    }
 } else {
-     header( 'Location: '. Config::get('site_url') ) ;
+    echo '没有输入数据。';
 }
+
+?>
+
+</body>
+</html>
