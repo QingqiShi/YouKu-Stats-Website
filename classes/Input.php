@@ -4,10 +4,10 @@ class Input {
     public static function exists($type = 'post') {
         switch ($type) {
             case 'post':
-                return (!empty($_POST)) ? true : false;
+                return empty($_POST) ? false : true;
                 break;
             case 'get':
-                return (!empty($_GET)) ? true : false;
+                return empty($_GET) ? false : true;
                 break;
             default:
                 return false;
