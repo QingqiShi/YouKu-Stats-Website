@@ -3,3 +3,7 @@
 
 error_log
 *.codekit
+
+*.scss
+
+.sass-cache
