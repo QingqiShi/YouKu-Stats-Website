@@ -1,0 +1,22 @@
+{
+  "name": "YouKu-Stats-Website",
+  "version": "0.0.0",
+  "homepage": "https://github.com/QingqiShi/YouKu-Stats-Website",
+  "authors": [
+    "Qingqi Shi <qingqishi@live.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highstock-release": "~2.0.1",
+    "jquery": "~2.1.1",
+    "Semantic-UI": "~0.18.0"
+  }
+}
