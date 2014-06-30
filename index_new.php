@@ -26,8 +26,8 @@
             </select>
             <input type="hidden" name="frequency" value="daily">
             <input type="hidden" name="range" value="lastmonth">
-            <input type="hidden" name="graphType" value="2">
-            <input type="submit" value="拉取数据" class="submit"/>
+            <input type="hidden" name="data_type" value="2">
+            <input type="submit" value="拉取数据">
         </form>
     </div>
 </body>
