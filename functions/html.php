@@ -38,7 +38,7 @@ function foot() {
 
 function userMeta($id, $name, $url, $avatar, $video_num) {
           ?><div class="avatar_container">
-                <!-- <img class="avatar" src="<?php echo $avatar; ?>" alt="<?php echo $name; ?>"> -->
+                <img class="avatar" src="<?php echo $avatar; ?>" alt="<?php echo $name; ?>">
             </div>
             <div class="meta_info">
                 <div class="meta_user_name">
@@ -66,7 +66,7 @@ function userMeta($id, $name, $url, $avatar, $video_num) {
             <?php
 }
 
-function dataRange($range) {
+function dataRange($range, $id) {
 
     $exploded_range = explode('-', $range);
 
@@ -79,7 +79,9 @@ function dataRange($range) {
                     <div class="text"><?php echo $range; ?></div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="<?php rangeLink(0, time()); ?>">
+                        <a href="<?php 
+
+                        rangeLink((DB::getInstance()->query('SELECT * FROM data WHERE `u_ID` = ' . $id . ' ORDER BY `d_timestamp` LIMIT 1')->results(0, 'd_timestamp')), time()); ?>">
                             <div class="item">存在期间</div>
                         </a>
 
@@ -388,6 +390,8 @@ function dataSet($id, $frequency, $range, $data_type, $cumulate) {
     $data = new Data($range, $frequency);
 
     $data->input_data($id, $data_type);
+
+    echo $data->get_data($cumulate);
 
     // $start_date = strtotime(explode('-', $range)[0]);
     // $end_date = strtotime(explode('-', $range)[1]);

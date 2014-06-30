@@ -85,7 +85,7 @@ if (Input::exists('get')) {
         </div>
 
         <div class="data_range">
-            <?php dataRange(Input::get('range')); ?>
+            <?php dataRange(Input::get('range'), $current_user['id']); ?>
         </div>
 
         <div class="data_type">
