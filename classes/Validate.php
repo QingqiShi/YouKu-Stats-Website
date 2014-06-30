@@ -50,6 +50,24 @@ class Validate {
                                 $this->addError("{$item_name}已经存在");
                             }
                         break;
+                        case 'values':
+                            // to use:
+                            //    'values' => array(%ACCEPTABLE_VALUES)
+                            $check = false;
+                            foreach ($rule_value as $accepted) {
+                                if ($value == $accepted) {
+                                    $check = true;
+                                }
+                            }
+                            if (!$check) {
+                                $this->addError("{$item_name}参数不正确");
+                            }
+                        break;
+                        case 'format':
+                            if (!preg_match($rule_value, $value)) {
+                                $this->addError("{$item_name}的格式不正确");
+                            }
+                        break;
                     }
                 }
             }

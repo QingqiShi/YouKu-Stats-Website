@@ -125,8 +125,15 @@ class DB {
         }
     }
 
-    public function results() {
-        return $this->_results;
+    public function results($row, $key) {
+        if (!$this->_error) {
+            if (isset($this->_results[$row]->$key)) {
+                return $this->_results[$row]->$key;
+            } else {
+                return '数据库出错';
+            }
+        }
+        return '数据库出错';
     }
 
     public function error() {
