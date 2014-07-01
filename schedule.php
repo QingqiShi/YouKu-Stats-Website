@@ -1,60 +1,70 @@
 <?php
+require_once 'core/init.php';
 
-	function get_url_contents($url){
-		$crl = curl_init();
-		$timeout = 3;
-		curl_setopt ($crl, CURLOPT_URL,$url);
-		curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
-		$ret = curl_exec($crl);
-		curl_close($crl);
-		return $ret;
+date_default_timezone_set('Asia/Shanghai');
+
+function get_xpath_result($result) {
+	if ($result->length > 0) {
+		return $result->item(0)->nodeValue;
+	} else {
+		return '';
+	}
+}
+
+$retrieved_values = array(
+	'id' => '',
+	'user_name' => '',
+	'view' => '',
+	'sub' => '',
+	'avatar' => '',
+	'video_num' => ''
+);
+
+$data_array = array();
+
+$db = DB::getInstance()->query('SELECT * FROM user');
+
+for ($i = 0; $i < $db->count(); $i++) { 
+	$retrieved_values['id'] = $db->results($i, 'u_id');
+
+
+	$url_content = file_get_contents($db->results($i, 'u_url'));
+
+	$dom = new DOMDocument();
+	@$dom->loadHTML($url_content);
+	$xPath = new DOMXpath($dom);
+
+	$user_name = $xPath->query('//*[@id="topzone"]/div/div[2]/div[2]/div[1]/div/a[1]');
+	$retrieved_values['user_name'] = get_xpath_result($user_name);
+
+
+	$view = $xPath->query('//*[@id="topzone"]/div/div[2]/div[2]/div[3]/ul/li[1]/em');
+	$retrieved_values['view'] = get_xpath_result($view);
+
+
+	$sub = $xPath->query('//*[@id="topzone"]/div/div[2]/div[2]/div[3]/ul/li[3]/em');
+	$retrieved_values['sub'] = get_xpath_result($sub);
+
+
+	$avatar = $xPath->query('//*[@id="topzone"]/div/div[2]/div[1]/a/img');
+	if($avatar->length > 0) {
+		$retrieved_values['avatar'] = $avatar->item(0)->getAttribute('src');
+	} else {
+		$retrieved_values['avatar'] = '';
 	}
 
-	$file = fopen("list.txt","r");
 
-	$file_id = 1;
-	while (!feof($file)) {
-		$line = fgets($file);
-        $line = rtrim($line);
-        $line = ltrim($line);
-        $user_id = substr($line, 
-                          0, 
-                          strpos($line, " "));
-        $name = substr($line, 
-                       strpos($line, " ") + 1, 
-                       strpos($line, " ", strlen($user_id)+1) - (strpos($line, " ") + 1));
-        $url = substr($line, 
-                      strlen($user_id) + strlen($name) + 2);
+	$video_num = $xPath->query('//*[@id="lpart1"]/div/div[1]/div[1]/span/a');
+	$retrieved_values['video_num'] = trim(get_xpath_result($video_num), ')(');
 
-		$i = false;
-		$j = false;
-		$count = 0;
-		while (($i == false || $j == false) && $count < 5) {
-			$str = get_url_contents($url);
-			$i = strpos($str, "<li class=\"vnum\"><em>");
-			$j = strrpos($str, "<li class=\"snum\" ><em sum_num=\"");
-			$count++;
-		}
+	$data_array[] = $retrieved_values;
+}
 
-		$view = substr($str, $i +21, 50);
-		$view = substr($view, 0, strpos($view, "</em>"));
-		$view = str_replace(",", "", $view);	
-		
-		$sub = substr($str, $j +31, 50);
-		$sub = substr($sub, 0, strpos($sub, "\">"));
-		
-		$visit = 0;
-
-		$analyse = fopen($file_id.".txt","a");
+// update user table
+foreach ($data_array as $data) {
+	DB::getInstance()->update('user', array('u_id', $data['id']), array('u_name' => $data['user_name'], 'u_avatar' => $data['avatar'], 'u_videoNum' => $data['video_num']));
+	// DB::insert()
+}
 
 
-		echo time()." ".$sub." ".$view." ".$visit."\n";
-		fwrite($analyse, time()." ".$sub." ".$view." ".$visit."\n");
-		fclose($analyse);
-
-		$file_id++;
-	}
-	fclose($file);
-	
-?>
+echo '成功';
