@@ -50,6 +50,8 @@ function importDataFromFile($fileName, $u_id) {
     } else {
         echo $fileName . "失败 :-(";
     }
+
+    fclose($file);
 }
 
 ?>
