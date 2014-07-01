@@ -6,7 +6,7 @@ class Data {
 	private $start_date, $end_date;
 
 	private $fix_rules = array(
-		array('sub', '20140526', '20140530', 750)
+		array('sub', '20140526', '20140530')
 	);
 
 	public function __construct($range, $frequency) {
@@ -116,7 +116,16 @@ class Data {
 	public function systematic_fix($timestamp, $data) {
 		foreach ($this->fix_rules as $rule) {
 			if ($this->type == $rule[0] && $timestamp > strtotime($rule[1]) && $timestamp < strtotime($rule[2])) {
-				return ($data + $rule[3]);
+				$temp1 = $this->data_set[$this->get_next_date(strtotime($rule[2]))];
+				$temp2 = $this->data_set[$this->get_last_date($this->get_next_date(strtotime($rule[2])))];
+				$offset_high = $temp1 - $temp2;
+
+				$temp1 = $this->data_set[$this->get_last_date(strtotime($rule[1]) + (2*24*60*60))];
+				$temp2 = $this->data_set[$this->get_next_date($this->get_last_date(strtotime($rule[1]) + (2*24*60*60)))];
+				$offset_low = $temp1 - $temp2;
+
+				$offset = floor(($offset_high + $offset_low) / 2);
+				return ($data + $offset);
 			}
 		}
 		return $data;
