@@ -7,9 +7,9 @@ $GLOBALS['config'] = array(
     'site_url' => 'http://youkustats',
     'mysql' => array(
                      'host' => 'localhost',
-                     'username' => 'ukstone',
-                     'password' => 'woaini344-1107',
-                     'db' => 'rocky_youkustats'
+                     'username' => 'xwiy_sql',
+                     'password' => 'BJc=Ev.HdQ(p',
+                     'db' => 'xwiy_youkustats'
                      ),
     'remember' => array(
                         'cookie_name' => 'hash',
