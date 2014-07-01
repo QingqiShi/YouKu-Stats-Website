@@ -63,8 +63,7 @@ for ($i = 0; $i < $db->count(); $i++) {
 // update user table
 foreach ($data_array as $data) {
 	DB::getInstance()->update('user', array('u_id', $data['id']), array('u_name' => $data['user_name'], 'u_avatar' => $data['avatar'], 'u_videoNum' => $data['video_num']));
-	// DB::insert()
+	DB::getInstance()->insert('data', array('d_timestamp' => time(), 'u_id' => $data['id'], 'd_sub' => $data['sub'], 'd_view' => $data['view']));
 }
-
 
 echo '成功';
