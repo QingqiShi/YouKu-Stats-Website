@@ -81,7 +81,7 @@ class DB {
     }
 
     public function insert($table, $fields = array()) {
-    // insert(TABLE, ARRAY())
+    // insert(TABLE, ARRAY(FIELD_NAME => VALUE))
         $keys = array_keys($fields);
         $values = '';
         $x = count($fields);
@@ -94,7 +94,7 @@ class DB {
             $x--;
         }
 
-        $sql = "INSERT INTO users (`" . implode('`, `', $keys) ."`) VALUES (" . $values . ")";
+        $sql = "INSERT INTO ". $table . " (`" . implode('`, `', $keys) ."`) VALUES (" . $values . ")";
 
         if (!$this->query($sql, $fields)->error()) {
             return true;
