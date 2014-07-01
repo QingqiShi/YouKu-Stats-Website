@@ -81,6 +81,7 @@ class DB {
     }
 
     public function insert($table, $fields = array()) {
+    // insert(TABLE, ARRAY())
         $keys = array_keys($fields);
         $values = '';
         $x = count($fields);
@@ -102,6 +103,7 @@ class DB {
     }
 
     public function update($table, $ids = array(), $fields = array()) {
+    // update(TABLE, ARRAY('ID_FIELD_NAME', 'ID'), ARRAY('FIELD_NAME' => 'NEW_VALUE'))
         if (count($ids) == 2) {
             $set = '';
             $x = count($fields);
