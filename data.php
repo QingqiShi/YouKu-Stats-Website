@@ -89,7 +89,7 @@ if (Input::exists('get')) {
         </div>
 
         <div class="data_type">
-            <?php dataType(Input::get('data_type')); ?>
+            <?php dataType(Input::get('data_type'), $current_user['id'], Input::get('range')); ?>
         </div>
 
         <div class="data_frequency">

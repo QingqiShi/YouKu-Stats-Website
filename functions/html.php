@@ -139,7 +139,10 @@ function rangeLink($date_one, $date_two) {
     ));
 }
 
-function dataType($data_type) {
+function dataType($data_type, $id, $range) {
+
+    $sql = '(SELECT d_view, d_sub FROM data WHERE u_ID = ' . $id . ' AND d_timestamp > ' . (strtotime(explode('-', $range)[0]) + (24*60*60)) . ' AND d_timestamp < ' . strtotime(explode('-', $range)[1]) . ' ORDER BY d_timestamp LIMIT 1) UNION ALL (SELECT d_view, d_sub FROM data WHERE u_ID = ' . $id . ' AND d_timestamp > ' . (strtotime(explode('-', $range)[0]) + (24*60*60)) . ' AND d_timestamp < ' . strtotime(explode('-', $range)[1]) . ' ORDER BY d_timestamp DESC LIMIT 1)';
+
 ?>
             <ul>
                 <li>
@@ -158,7 +161,11 @@ function dataType($data_type) {
                     ?>>
                         <div class="data_type_container">
                             <div class="data_type_title">估计观看次数</div>
-                            <div class="data_type_value">143,124</div>
+                            <div class="data_type_value"><?php 
+                                $db = DB::getInstance()->query($sql);
+
+                                echo number_format($db->results(1, 'd_view') - $db->results(0, 'd_sub'));
+                            ?></div>
                         </div>
                     </a>
                 </li>
@@ -178,7 +185,9 @@ function dataType($data_type) {
                     ?>>
                         <div class="data_type_container">
                             <div class="data_type_title">订阅人数</div>
-                            <div class="data_type_value">12,345</div>
+                            <div class="data_type_value"><?php 
+                                echo number_format($db->results(1, 'd_sub') - $db->results(0, 'd_sub'));
+                            ?></div>
                         </div>
                     </a>
                 </li>
