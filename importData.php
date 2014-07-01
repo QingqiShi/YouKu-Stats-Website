@@ -1,8 +1,13 @@
 <?php
 
-include_once('ROCKYconf.php');
+require_once 'core/init.php';
 
-importDataFromFile('12.txt', 12);
+date_default_timezone_set('Asia/Shanghai');
+
+for ($i=1; $i < 13; $i++) {
+    importDataFromFile($i. '.txt', $i);
+}
+
 
 
 function importDataFromFile($fileName, $u_id) {
@@ -37,12 +42,13 @@ function importDataFromFile($fileName, $u_id) {
     }
 
     $query = substr($query, 0, -2);
-    echo $query;
-    $result = mysql_query($query);
-    if ($result) {
-        echo "完成！";
+
+    $result = DB::getInstance()->query($query);
+
+    if (!$result->error()) {
+        echo $fileName . "完成！";
     } else {
-        echo "失败 :-(";
+        echo $fileName . "失败 :-(";
     }
 }
 
