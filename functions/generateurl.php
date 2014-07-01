@@ -1,7 +1,7 @@
 <?php
 
 function generate_self_url($change_rule) {
-	$url = Config::get('site_url') . $_SERVER['PHP_SELF'] . '?';
+	$url = Config::get('main_site') . $_SERVER['PHP_SELF'] . '?';
 	$param_list = array('name', 'frequency', 'range', 'data_type', 'cumulate');
 
 	$first = true;
