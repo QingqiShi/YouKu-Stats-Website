@@ -1,0 +1,39 @@
+@import 'colors';
+@import 'mixins';
+
+.pull_form {
+	max-width: 270px;
+	height: 100px;
+	margin: auto;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 16px;
+
+
+	@media (max-width: 720px) {
+		margin: 150px auto auto;
+	}
+
+	form {
+		width: 90%;
+		height: 40%;
+		margin: auto;
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		font-size: inherit;
+
+		select {
+			font-size: inherit;
+		}
+
+		input {
+			font-size: inherit;
+		}
+	}
+}
