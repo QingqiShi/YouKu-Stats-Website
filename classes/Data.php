@@ -33,7 +33,7 @@ class Data {
 			for (; $x < $results->count(); $x++) {
 				$temp_date = $results->results($x, 'd_timestamp');
 				$temp_data = $results->results($x, $data_type);
-				if ($temp_date >= $date && $temp_date < $this->get_next_date($date) && date('G', $temp_date) < 5) {
+				if ($temp_date >= $date && $temp_date < $this->get_next_date($date) && date('G', $temp_date) < 12) {
 				// test for date within range of the particular frequency
 
 					if (empty($data)) {
