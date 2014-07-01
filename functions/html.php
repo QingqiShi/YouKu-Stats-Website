@@ -164,7 +164,7 @@ function dataType($data_type, $id, $range) {
                             <div class="data_type_value"><?php 
                                 $db = DB::getInstance()->query($sql);
 
-                                echo number_format($db->results(1, 'd_view') - $db->results(0, 'd_sub'));
+                                echo number_format($db->results(1, 'd_view') - $db->results(0, 'd_view'));
                             ?></div>
                         </div>
                     </a>
