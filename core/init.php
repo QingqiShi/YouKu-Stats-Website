@@ -3,7 +3,7 @@
 session_start();
 
 $GLOBALS['config'] = array(
-    'site_url' => 'http://www.cssanott.co.uk/YouKu-Stats-Website/',
+    'site_url' => 'http://www.cssanott.co.uk/',
     // 'site_url' => 'http://youkustats',
     'mysql' => array(
                      'host' => 'localhost',
