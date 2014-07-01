@@ -1,14 +1,22 @@
-<?php require_once 'core/init.php' ?>
+<?php
+require_once 'core/init.php';
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>优酷数据统计</title>
-</head>
-<body>
+date_default_timezone_set('Asia/Shanghai');
+
+head(array(
+    'css' => array(
+        '/css/global.css', 
+        '/css/index_style.css', 
+        '/libs/Semantic-UI/build/minified/elements/icon.min.css', 
+        '/libs/Semantic-UI/build/minified/modules/dropdown.min.css'
+    ),
+    'js' => array(
+        '/libs/jquery/dist/jquery.min.js',
+        '/libs/Semantic-UI/build/minified/modules/dropdown.min.js'
+    )
+    ));
+?>
+
     <div class="title largeMargin">
         优酷数据统计
     </div>
@@ -30,5 +38,5 @@
             <input type="submit" value="拉取数据">
         </form>
     </div>
-</body>
-</html>
+<?php
+    foot();
