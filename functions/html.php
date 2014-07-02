@@ -81,7 +81,7 @@ function dataRange($range, $id) {
                     <div class="menu">
                         <a href="<?php 
 
-                        rangeLink((DB::getInstance()->query('SELECT * FROM data WHERE `u_ID` = ' . $id . ' ORDER BY `d_timestamp` LIMIT 1')->results(0, 'd_timestamp')), time()); ?>">
+                        rangeLink((DB::getInstance()->query('SELECT * FROM data WHERE `u_ID` = ' . $id . ' ORDER BY `d_timestamp` LIMIT 2')->results(1, 'd_timestamp')), time()); ?>">
                             <div class="item">存在期间</div>
                         </a>
 
