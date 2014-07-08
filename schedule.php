@@ -55,7 +55,7 @@ if (Input::get('id') !== '' && !$db->error()) {
 
 	echo json_encode($retrieved_values);
 
-} else if (!db->error()) {
+} else if (!$db->error()) {
 	$url = array();
 	for ($i = 0; $i < $db->count(); $i++) {
 		$url[] = Config::get('site_url').'/schedule.php?id='.$i;
