@@ -29,3 +29,4 @@ spl_autoload_register(function($class) {
 require_once('functions/html.php');
 require_once('functions/sanitize.php');
 require_once('functions/generateurl.php');
+require_once('functions/multirequest.php');
