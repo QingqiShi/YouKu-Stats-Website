@@ -15,7 +15,7 @@ $data_array = array();
 
 $db = DB::getInstance()->query('SELECT * FROM user');
 
-if (Input::get('id') !== '' && !$db->error()) {
+if (Input::get('line') !== '' && !$db->error()) {
 	$retrieved_values = array(
 		'id' => '',
 		'user_name' => '',
@@ -26,10 +26,10 @@ if (Input::get('id') !== '' && !$db->error()) {
 	);
 
 	// Get user ID
-	$retrieved_values['id'] = $db->results(Input::get('id'), 'u_id');
+	$retrieved_values['id'] = $db->results(Input::get('line'), 'u_id');
 
 	// Fetch url content
-	$url_content = file_get_contents($db->results(Input::get('id'), 'u_url'));
+	$url_content = file_get_contents($db->results(Input::get('line'), 'u_url'));
 
 	// Setting up DOM parser
 	$dom = new DOMDocument();
@@ -58,7 +58,7 @@ if (Input::get('id') !== '' && !$db->error()) {
 } else if (!$db->error()) {
 	$url = array();
 	for ($i = 0; $i < $db->count(); $i++) {
-		$url[] = Config::get('site_url').'/schedule.php?id='.$i;
+		$url[] = Config::get('site_url').'/schedule.php?line='.$i;
 	}
 	
 	$results = multiRequest($url);
